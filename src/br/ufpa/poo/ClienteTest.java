@@ -19,7 +19,7 @@ class ClienteTest {
 
 		Assertions.assertEquals(c1.getPedido().getNome(), "Pizza de Queijo");
 	}
-
+	//testando modificacao
 	@Test
 	void testValorPedido() {
 		Cliente c1 = new Cliente("Gustavo", "00000000000");
