@@ -12,7 +12,7 @@ class RestauranteTest {
 		
 		restaurante.realizarPedido(novoPedido);
 		
-		Assertions.assertEquals(restaurante.statusPedido().getNome(), "Pizza de Queijo");
+		Assertions.assertEquals(restaurante.statusPedido().getNomePedido(), "Pizza de Queijo");
 	}
 
 	
