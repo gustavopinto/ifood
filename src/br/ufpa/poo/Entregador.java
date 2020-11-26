@@ -18,5 +18,9 @@ public class Entregador {
 	public Pedido getPedido() {
 		return this.pedido;
 	}
+	
+	public String getNome() {
+		return nome;
+	}
 
 }

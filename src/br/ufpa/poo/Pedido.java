@@ -17,7 +17,7 @@ public class Pedido {
 		this.cliente = cliente;
 	}
 
-	public String getNomePedido() {
+	public String getNome() {
 		return nomePedido;
 	}
 
