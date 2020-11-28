@@ -26,6 +26,8 @@ class ClienteTest {
 
 		c1.realizarPedido("Pizza de Queijo", new PizzaHut());
 		// COMO FAZ O TESTE DO VALOR DO PEDIDO???
+		// Não sei...
+		//se fu...
 	}
 
 }
