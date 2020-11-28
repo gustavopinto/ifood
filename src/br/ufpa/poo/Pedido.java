@@ -34,7 +34,7 @@ public class Pedido {
 	}
 
 	public double getValorFrete() {
-		return valorPedido;
+		return valorFrete;
 	}
 
 	public Cliente getCliente() {
