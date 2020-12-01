@@ -1,5 +1,7 @@
 package br.ufpa.poo;
 
+import java.util.Date;
+
 public class Pedido {
 
 	private String nome;
@@ -8,12 +10,14 @@ public class Pedido {
 	private Cliente cliente;
 	private boolean chegou;
 	private boolean pagou;
+	private Date dataPedido;
 	
 	public Pedido (Cliente cliente, String nomeDoPedido) {
 		this.nome = nomeDoPedido;
 		this.cliente = cliente;
 		this.chegou = false;
 		this.pagou = false;
+		this.dataPedido = new Date();
 	}
 	
 	public Pedido (Cliente cliente, String nomeDoPedido, double valorPedido) {
@@ -39,6 +43,14 @@ public class Pedido {
 
 	public Cliente getCliente() {
 		return cliente;
+	}
+	
+	public Date getDataPedido() {
+		return dataPedido;
+	}
+
+	public void setDataPedido(Date dataPedido) {
+		this.dataPedido = dataPedido;
 	}
 	
 	public void definirValorPedido(double valorPedido, double valorFrete) {

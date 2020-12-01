@@ -1,15 +1,17 @@
 package br.ufpa.poo;
 
+import java.util.List;
+
 public interface Restaurante {
 
-	public void realizarPedido(Pedido pedido);
+	public void receberPedido(List<Pedido> pedidos);
 	
 	public void cancelarPedido(String nomePedido);
 
-	public void enviarPedidoPedido(Entregador entregador);
+	public void enviarPedido(Entregador entregador);
 	
 	public void finalizarPedido();
 	
-	public Pedido statusPedido();
+	public List<Pedido> statusPedido();
 	
 }
