@@ -1,4 +1,4 @@
-package br.ufpa.poo;
+	package br.ufpa.poo;
 
 public class Pedido {
 

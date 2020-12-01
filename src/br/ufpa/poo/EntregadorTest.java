@@ -41,8 +41,7 @@ class EntregadorTest {
 		List<String> items = new ArrayList<>();
 		
 		for (int i = 0; i < items.size(); i++) {
-			String item = items.get(0);
-			
+			String item = items.get(0);			
 		}
 			
 	}
