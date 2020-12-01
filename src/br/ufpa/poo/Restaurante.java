@@ -12,4 +12,5 @@ public interface Restaurante {
 	
 	public Pedido statusPedido(int index);
 	
+	
 }
