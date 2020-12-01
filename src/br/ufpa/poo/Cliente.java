@@ -4,7 +4,6 @@ public class Cliente {
 
 	private String nome;
 	private String cpf;
-
 	private Pedido meuPedido;
 	
 	public Cliente(String nome, String cpf) {
@@ -24,7 +23,6 @@ public class Cliente {
 		this.meuPedido = new Pedido(this, nome);
 		restaurante.realizarPedido(meuPedido);
 	}
-	
 	public Pedido getPedido() {
 		return meuPedido;
 	}

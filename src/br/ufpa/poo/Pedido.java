@@ -51,7 +51,7 @@ public class Pedido {
 	}
 	
 	public void realizarPagamento() {
-		this.pagou=true;
+		this.pagou = true;
 	}
 	
 	public boolean statusEntrega() {
@@ -60,5 +60,6 @@ public class Pedido {
 	
 	public void pedidoEntregue() {
 		this.chegou = true;
+		
 	}
 }

@@ -2,17 +2,21 @@ package br.ufpa.poo;
 
 public class PizzaHut implements Restaurante {
 	
-	private Pedido novoPedido;
+	private Pedido[] novoPedido;
 
 	@Override
-	public void realizarPedido(Pedido pedido) {		
+	public void realizarPedido(Pedido[] pedido) {		
 		
-		double valorFrete = Math.random() * 10;
-		double valorPrato = Math.random() * 20; 
+		double valorFrete;
+		double valorPrato; 
 		
 		this.novoPedido = pedido;
+		for(int i = 0; i < this.novoPedido.length; i++) {
+			valorFrete = Math.random() * 10;
+			valorPrato = Math.random() * 20;
+			this.novoPedido[i].definirValorPedido(valorPrato, valorFrete);
+		}
 		
-		this.novoPedido.definirValorPedido(valorPrato, valorFrete);
 	}
 
 	@Override
@@ -29,7 +33,7 @@ public class PizzaHut implements Restaurante {
 		this.novoPedido = null;
 	}
 	
-	public Pedido statusPedido() {
+	public Pedido[] statusPedido() {
 		return novoPedido;
 	}
 
