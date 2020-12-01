@@ -4,12 +4,13 @@ public interface Restaurante {
 
 	public void realizarPedido(Pedido pedido);
 	
-	public void cancelarPedido(String nomePedido);
+	public void cancelarPedido(Pedido nomePedido);
 
-	public void enviarPedidoPedido(Entregador entregador);
+	public void enviarPedido(Entregador entregador);
 	
-	public void finalizarPedido();
+	public void finalizarPedido(Pedido pedido);
 	
-	public Pedido statusPedido();
+	public Pedido statusPedido(int index);
+	
 	
 }

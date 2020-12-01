@@ -4,7 +4,6 @@ public class Entregador {
 
 	private String nome;
 	private Pedido pedido;
-	
 	private double saldo;
 
 	public Entregador(String nome) {
@@ -28,6 +27,14 @@ public class Entregador {
 
 	public Pedido getPedido() {
 		return this.pedido;
+	}
+
+	public double getSaldo() {
+		return saldo;
+	}
+
+	public void setSaldo(double saldo) {
+		this.saldo = saldo;
 	}
 
 }
