@@ -6,7 +6,7 @@ public interface Restaurante {
 	
 	public void cancelarPedido(String nomePedido);
 
-	public void enviarPedidoPedido(Entregador entregador);
+	public void enviarPedido(Entregador entregador);
 	
 	public void finalizarPedido();
 	

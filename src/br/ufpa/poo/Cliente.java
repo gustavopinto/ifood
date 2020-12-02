@@ -20,8 +20,8 @@ public class Cliente {
 		return this.cpf;
 	}
 	
-	public void realizarPedido(String nome, Restaurante restaurante) {
-		this.meuPedido = new Pedido(this, nome);
+	public void realizarPedido(String nome, Restaurante restaurante, int h, int m) {
+		this.meuPedido = new Pedido(this, nome, h, m);
 		restaurante.realizarPedido(meuPedido);
 	}
 	

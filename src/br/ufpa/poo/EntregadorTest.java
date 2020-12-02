@@ -18,7 +18,7 @@ class EntregadorTest {
 	@Test
 	void testReceberPedido() {
 		Entregador entregador = new Entregador("Henrique");
-		Pedido novoPedido = new Pedido(new Cliente("Gustavo", "00000"), "Pizza de Queijo");
+		Pedido novoPedido = new Pedido(new Cliente("Gustavo", "00000"), "Pizza de Queijo", 10,33);
 		
 		entregador.receberPedido(novoPedido);
 		
@@ -37,14 +37,6 @@ class EntregadorTest {
 		boolean valorDoPedido = true;
 		
 		Assertions.assertEquals(entregador.getPedido().statusPagamento(), valorDoPedido);
-		
-		List<String> items = new ArrayList<>();
-		
-		for (int i = 0; i < items.size(); i++) {
-			String item = items.get(0);
-			
-		}
-			
 	}
 
 }

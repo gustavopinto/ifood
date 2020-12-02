@@ -1,24 +1,21 @@
 package br.ufpa.poo;
 
 public class Entregador {
-
-	private String nome;
-	private Pedido pedido;
-	
-	private double saldo;
+	String nome;
+	Conta conta;
 
 	public Entregador(String nome) {
 		this.nome = nome;
 	}
 
-	public void receberPedido(Pedido pedido) {
-		this.pedido = pedido;
+	public void receberPedido(Conta conta) {
+		this.conta = conta;
 	}
 
-	public void receberPagamento(double valor) {
-		if (valor == pedido.getValorTotal()) {
-			pedido.realizarPagamento();
-			this.saldo += pedido.getValorFrete();
+	public void receberPagamento(float valor) {
+		if (valor == this.conta.getValorTotal()) {
+			boolean pagou = true;
+			conta.pagamento(pagou);				
 		}
 	}
 
@@ -26,8 +23,8 @@ public class Entregador {
 		return this.nome;
 	}
 
-	public Pedido getPedido() {
-		return this.pedido;
+	public Conta getConta() {
+		return this.conta;
 	}
 
 }
