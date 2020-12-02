@@ -1,5 +1,8 @@
 package br.ufpa.poo;
 
+import java.util.Calendar;
+import java.util.Date;
+
 public class Pedido {
 
 	private String nome;
@@ -8,14 +11,16 @@ public class Pedido {
 	private Cliente cliente;
 	private boolean chegou;
 	private boolean pagou;
-	
+	private Date data;
+
 	public Pedido (Cliente cliente, String nomeDoPedido) {
 		this.nome = nomeDoPedido;
 		this.cliente = cliente;
 		this.chegou = false;
 		this.pagou = false;
+		this.data = Calendar.getInstance().getTime();
 	}
-	
+
 	public Pedido (Cliente cliente, String nomeDoPedido, double valorPedido) {
 		this(cliente, nomeDoPedido);
 		this.valorPedido = valorPedido;
@@ -60,5 +65,9 @@ public class Pedido {
 	
 	public void pedidoEntregue() {
 		this.chegou = true;
+	}
+
+	public Date getData() {
+		return data;
 	}
 }
