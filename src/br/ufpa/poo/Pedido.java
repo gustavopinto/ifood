@@ -20,11 +20,6 @@ public class Pedido {
 		this.dataPedido = new Date();
 	}
 	
-	public Pedido (Cliente cliente, String nomeDoPedido, double valorPedido) {
-		this(cliente, nomeDoPedido);
-		this.valorPedido = valorPedido;
-	}
-
 	public String getNome() {
 		return nome;
 	}
@@ -41,6 +36,10 @@ public class Pedido {
 		return valorPedido;
 	}
 
+	public void setValorFrete(double valorFrete) {
+		this.valorFrete = valorFrete;
+	}
+
 	public Cliente getCliente() {
 		return cliente;
 	}
@@ -53,9 +52,8 @@ public class Pedido {
 		this.dataPedido = dataPedido;
 	}
 	
-	public void definirValorPedido(double valorPedido, double valorFrete) {
+	public void definirValorPedido(double valorPedido) {
 		this.valorPedido = valorPedido;
-		this.valorFrete = valorFrete;
 	}
 
 	public boolean statusPagamento() {

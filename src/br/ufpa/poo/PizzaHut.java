@@ -14,14 +14,14 @@ public class PizzaHut implements Restaurante {
 
 	@Override
 	public void receberPedido(List<Pedido> pedidos) {		
-		
 		double valorFrete = Math.random() * 10;
 		
 		pedidos.forEach(pedido -> {
 			double valorPrato = Math.random() * 20; 
 			
-			pedido.definirValorPedido(valorPrato, valorFrete);
-
+			pedido.definirValorPedido(valorPrato);
+			pedido.setValorFrete(valorFrete);
+			
 			this.novosPedidos.add(pedido);
 		});
 	}

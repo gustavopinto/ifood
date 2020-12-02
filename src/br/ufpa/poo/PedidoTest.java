@@ -1,7 +1,5 @@
 package br.ufpa.poo;
 
-import java.util.Date;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

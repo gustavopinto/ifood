@@ -8,6 +8,7 @@ public class Cliente {
 	private String nome;
 	private String cpf;
 	private String status;
+	private double aux;
 	
 	private List<Pedido> meusPedidos;
 	
@@ -15,6 +16,7 @@ public class Cliente {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.status = "";
+		this.aux = 0;
 		this.meusPedidos = new ArrayList<Pedido>();
 	}
 
@@ -29,14 +31,19 @@ public class Cliente {
 	public void realizarPedido(Restaurante restaurante, List<Pedido> pedidos) {
 		this.meusPedidos = pedidos;
 		
+		restaurante.receberPedido(meusPedidos);
+		
 		pedidos.forEach(pedido -> {
 			pedido.realizarPagamento();
 		});
-		
-		restaurante.receberPedido(meusPedidos);
 	}
 	
 	public String statusMeusPedidos() {
+		
+		this.meusPedidos.forEach(pedido -> {
+			this.aux += pedido.getValorPedido();
+			
+		});
 		
 		status += "Cliente: " + this.nome + "\n"; 
 		status += "Valor do frete: R$" + String.format("%.2f", this.meusPedidos.get(0).getValorFrete()) + "\n"; 
@@ -45,7 +52,7 @@ public class Cliente {
 		this.meusPedidos.forEach(pedido -> {
 			status += pedido.getNome() + ": R$" + String.format("%.2f", pedido.getValorPedido()) + "\n"; 
 		});
-		status += "Valor do Total: R$ " + String.format("%.2f", this.meusPedidos.get(0).getValorTotal()) + "\n"; 
+		status += "Valor do Total: R$ " + String.format("%.2f", aux + this.meusPedidos.get(0).getValorFrete()) + "\n"; 
 		
 		return status;
 	}
