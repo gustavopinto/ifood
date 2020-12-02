@@ -1,28 +1,64 @@
 package br.ufpa.poo;
 
 public class Pedido {
-	Cliente cliente;
-	String nomePedido;
+
+	private String nome;
+	private double valorPedido;
+	private double valorFrete;
+	private Cliente cliente;
+	private boolean chegou;
+	private boolean pagou;
 	
-	public Pedido(Cliente cliente, String nomePedido) {
+	public Pedido (Cliente cliente, String nomeDoPedido) {
+		this.nome = nomeDoPedido;
 		this.cliente = cliente;
-		this.nomePedido = nomePedido;
+		this.chegou = false;
+		this.pagou = false;
+	}
+	
+	public Pedido (Cliente cliente, String nomeDoPedido, double valorPedido) {
+		this(cliente, nomeDoPedido);
+		this.valorPedido = valorPedido;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public double getValorTotal() {
+		return valorPedido + valorFrete;
+	}
+	
+	public double getValorPedido() {
+		return valorPedido;
+	}
+
+	public double getValorFrete() {
+		return valorPedido;
 	}
 
 	public Cliente getCliente() {
 		return cliente;
 	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+	
+	public void definirValorPedido(double valorPedido, double valorFrete) {
+		this.valorPedido = valorPedido;
+		this.valorFrete = valorFrete;
 	}
 
-	public String getNome() {
-		return nomePedido;
+	public boolean statusPagamento() {
+		return this.pagou;
 	}
-
-	public void setNomePedido(String nomePedido) {
-		this.nomePedido = nomePedido;
+	
+	public void realizarPagamento() {
+		this.pagou=true;
 	}
-
+	
+	public boolean statusEntrega() {
+		return this.chegou;
+	}
+	
+	public void pedidoEntregue() {
+		this.chegou = true;
+	}
 }

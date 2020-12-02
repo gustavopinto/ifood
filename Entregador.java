@@ -1,26 +1,35 @@
 package br.ufpa.poo;
 
+import java.util.ArrayList;
+
 public class Entregador {
-	
+
 	private String nome;
-	private Pedido pedido;
+	private ArrayList<Pedido> pedidos;
 	
+	private double saldo;
+
 	public Entregador(String nome) {
 		this.nome = nome;
 	}
-	
-	public void receberPedido(Pedido pedido) {
-		
-		this.pedido = pedido;
-		
+
+	public void receberPedido(ArrayList<Pedido> pedidos) {
+		this.pedidos = pedidos;
 	}
-	
-	public Pedido getPedido() {
-		return this.pedido;
+
+	public void receberPagamento(double valor) {
+		if (valor == pedido.getValorTotal()) {
+			pedido.realizarPagamento();
+			this.saldo += pedido.getValorFrete();
+		}
 	}
-	
+
 	public String getNome() {
-		return nome;
+		return this.nome;
+	}
+
+	public ArrayList<Pedido> getPedido() {
+		return this.pedidos;
 	}
 
 }
