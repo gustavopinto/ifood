@@ -1,8 +1,12 @@
 package br.ufpa.poo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PizzaHut implements Restaurante {
 	
 	private Pedido novoPedido;
+	private List<Pedido> listaDePedidos = new ArrayList<>();
 
 	@Override
 	public void realizarPedido(Pedido pedido) {		
@@ -10,19 +14,30 @@ public class PizzaHut implements Restaurante {
 		double valorFrete = Math.random() * 10;
 		double valorPrato = Math.random() * 20; 
 		
-		this.novoPedido = pedido;
-		
+		listaDePedidos.add(this.novoPedido);
 		this.novoPedido.definirValorPedido(valorPrato, valorFrete);
 	}
 
 	@Override
 	public void cancelarPedido(String nomePedido) {
-		this.novoPedido = null;
+        int c = 0;
+		for(int i = 0; i < listaDePedidos.size();i++){
+            if (listaDePedidos.get(i) == nomePedido) {
+				c++;
+            }
+		}
+		listaDePedidos.remove(c);
 	}
+
 
 	@Override
 	public void enviarPedidoPedido(Entregador entregador) {
-		entregador.receberPedido(novoPedido);
+		if (listaDePedidos.isEmpty()) {
+			System.out.print("Não há itens para entregar");
+		} else {
+		Pedido paraEntrega = listaDePedidos.get(listaDePedidos.size()-1);		
+		entregador.receberPedido(paraEntrega);
+		}
 	}
 	
 	public void finalizarPedido() {
@@ -30,7 +45,15 @@ public class PizzaHut implements Restaurante {
 	}
 	
 	public Pedido statusPedido() {
-		return novoPedido;
+		return listaDePedidos.get(listaDePedidos.size()-1);
+	}
+
+	public List<Pedido> getListaDePedidos() {
+		return listaDePedidos;
+	}
+
+	public void setListaDePedidos(List<Pedido> listaDePedidos) {
+		this.listaDePedidos = listaDePedidos;
 	}
 
 }

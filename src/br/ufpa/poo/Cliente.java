@@ -1,11 +1,12 @@
 package br.ufpa.poo;
 
+
 public class Cliente {
 
 	private String nome;
 	private String cpf;
-
 	private Pedido meuPedido;
+	
 	
 	public Cliente(String nome, String cpf) {
 		this.nome = nome;
@@ -21,7 +22,7 @@ public class Cliente {
 	}
 	
 	public void realizarPedido(String nome, Restaurante restaurante) {
-		this.meuPedido = new Pedido(this, nome);
+		this.meuPedido = new Pedido(null, nome, 0, nome);  
 		restaurante.realizarPedido(meuPedido);
 	}
 	

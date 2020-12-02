@@ -1,12 +1,16 @@
 package br.ufpa.poo;
 
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class EntregadorTest {
+	
+	static String dataHora = new SimpleDateFormat("dd-MM-yyyy_HH:mm:ss").format(Calendar.getInstance().getTime());
+
 
 	@Test
 	void testNovoEntregador() {
@@ -18,7 +22,7 @@ class EntregadorTest {
 	@Test
 	void testReceberPedido() {
 		Entregador entregador = new Entregador("Henrique");
-		Pedido novoPedido = new Pedido(new Cliente("Gustavo", "00000"), "Pizza de Queijo");
+		Pedido novoPedido = new Pedido(new Cliente("Gustavo", "00000000000"), "Pizza de Queijo", 35.0,dataHora);
 		
 		entregador.receberPedido(novoPedido);
 		
@@ -28,22 +32,21 @@ class EntregadorTest {
 	@Test
 	void testReceberPagamento() {
 		Entregador entregador = new Entregador("Henrique");
-		Pedido novoPedido = new Pedido(new Cliente("Gustavo", "00000"), "Pizza de Queijo");
+		Pedido novoPedido = new Pedido(new Cliente("Gustavo", "00000000000"), "Pizza de Queijo", 35.0,dataHora);
 		
 		entregador.receberPedido(novoPedido);
 		
 		
 		// QUAL O VALOR DO PEDIDO????
-		boolean valorDoPedido = true;
+		boolean valorDoPedido = false;
 		
-		Assertions.assertEquals(entregador.getPedido().statusPagamento(), valorDoPedido);
+		Assertions.assertEquals(entregador.getPedido().statusPagamento(),valorDoPedido);
 		
-		List<String> items = new ArrayList<>();
-		
-		for (int i = 0; i < items.size(); i++) {
-			String item = items.get(0);
-			
-		}
+		/*
+		 * List<String> items = new ArrayList<>();
+		 * 
+		 * for (int i = 0; i < items.size(); i++) { String item = items.get(0); }
+		 */
 			
 	}
 

@@ -8,18 +8,21 @@ public class Pedido {
 	private Cliente cliente;
 	private boolean chegou;
 	private boolean pagou;
+	public static String dataHora;
 	
-	public Pedido (Cliente cliente, String nomeDoPedido) {
-		this.nome = nomeDoPedido;
+	public Pedido (Cliente cliente, String nomeDoPedido, double valorPedido, String dataHora) {
 		this.cliente = cliente;
+		this.nome = nomeDoPedido;		
+		this.valorPedido = valorPedido;
 		this.chegou = false;
 		this.pagou = false;
+		Pedido.dataHora = dataHora;
 	}
 	
-	public Pedido (Cliente cliente, String nomeDoPedido, double valorPedido) {
-		this(cliente, nomeDoPedido);
-		this.valorPedido = valorPedido;
-	}
+	/*
+	 * public Pedido (Cliente cliente, String nomeDoPedido, double valorPedido) {
+	 * this(cliente, nomeDoPedido); this.valorPedido = valorPedido; }
+	 */
 
 	public String getNome() {
 		return nome;
@@ -61,4 +64,6 @@ public class Pedido {
 	public void pedidoEntregue() {
 		this.chegou = true;
 	}
-}
+
+}	
+
