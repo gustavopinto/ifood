@@ -33,8 +33,14 @@ class ClienteTest {
 	@Test
 	void testDataPedido(){
 		Cliente c1 = new Cliente("Gustavo", "00000000000");
+		List<String> pedidos = new ArrayList<>();
 
-		c1.realizarPedido("Pizza de Queijo", new PizzaHut());
+		pedidos.add("Mussarela");
+		pedidos.add("Peperoni");
+		pedidos.add("Marguerita");
+		pedidos.add("Calabresa");
+
+		c1.realizarPedido(pedidos, new PizzaHut());
 
 		Assertions.assertEquals(Calendar.getInstance().getTime().toString(), c1.getPedido().getData().toString());
 	}
