@@ -17,7 +17,7 @@ class ClienteTest {
 	void testRealizarPedido() {
 		Cliente c1 = new Cliente("Gustavo", "00000000000");
 		ph = new PizzaHut();
-		c1.realizarPedido("Pizza", ph);
+		c1.realizarPedido("Pizza", ph, 22,45);
 		Assertions.assertEquals(c1.getPedido().getNome(), "Pizza");
 	}
 
@@ -25,7 +25,7 @@ class ClienteTest {
 	void testValorPedido() {
 		Cliente c1 = new Cliente("Gustavo", "00000000000");
 
-		c1.realizarPedido("Pizza de Queijo", new PizzaHut());
+		c1.realizarPedido("Pizza de Queijo", new PizzaHut(), 22,45);
 		// COMO FAZ O TESTE DO VALOR DO PEDIDO???
 	}
 

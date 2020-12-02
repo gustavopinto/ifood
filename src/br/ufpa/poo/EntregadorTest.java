@@ -18,7 +18,7 @@ class EntregadorTest {
 	@Test
 	void testReceberPedido() {
 		Entregador entregador = new Entregador("Henrique");
-		Pedido novoPedido = new Pedido(new Cliente("Gustavo", "00000"), "Pizza de Queijo");
+		Pedido novoPedido = new Pedido(new Cliente("Gustavo", "00000"), "Pizza de Queijo", 10,33);
 		
 		entregador.receberPedido(novoPedido);
 		

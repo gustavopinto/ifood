@@ -8,7 +8,7 @@ class RestauranteTest {
 	@Test
 	void testNovoPedido() {
 		Restaurante restaurante = new PizzaHut();
-		Pedido novoPedido = new Pedido(new Cliente("Gustavo", "00000"), "Pizza de Queijo");
+		Pedido novoPedido = new Pedido(new Cliente("Gustavo", "00000"), "Pizza de Queijo",10,22);
 		
 		restaurante.realizarPedido(novoPedido);
 		
@@ -19,7 +19,7 @@ class RestauranteTest {
 	@Test
 	void testNovoPedidoCliente() {
 		Restaurante restaurante = new PizzaHut();
-		Pedido novoPedido = new Pedido(new Cliente("Gustavo", "00000"), "Pizza de Queijo");
+		Pedido novoPedido = new Pedido(new Cliente("Gustavo", "00000"), "Pizza de Queijo",10,22);
 		restaurante.realizarPedido(novoPedido);
 		
 		Assertions.assertEquals(restaurante.statusPedido().getCliente().getNome(), "Gustavo");
