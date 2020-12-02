@@ -3,17 +3,14 @@ import br.ufpa.poo.PizzaHut;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 class ClienteTest {
 
 	@Test
 	void testNovoCliente() {
 		Cliente c1 = new Cliente("Gustavo", "00000000000");
-		Assertions.assertEquals(c1.getNome(), "Gustavo");
+		Assertions.assertEquals("Gustavo", c1.getNome());
 	}
 
 	@Test
@@ -22,7 +19,7 @@ class ClienteTest {
 
 		c1.realizarPedido("Pizza de Queijo", new PizzaHut());
 
-		Assertions.assertEquals(c1.getPedido().getNome(), "Pizza de Queijo");
+		Assertions.assertEquals("Pizza de Queijo", c1.getPedido().getNome());
 	}
 
 	@Test
