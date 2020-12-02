@@ -1,5 +1,7 @@
 package br.ufpa.poo;
 
+import java.util.List;
+
 public class Cliente {
 
 	private String nome;
@@ -20,8 +22,8 @@ public class Cliente {
 		return this.cpf;
 	}
 	
-	public void realizarPedido(String nome, Restaurante restaurante) {
-		this.meuPedido = new Pedido(this, nome);
+	public void realizarPedido(List<String> nomes, Restaurante restaurante) {
+		this.meuPedido = new Pedido(this, nomes);
 		restaurante.realizarPedido(meuPedido);
 	}
 	
