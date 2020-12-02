@@ -1,36 +1,35 @@
 package br.ufpa.poo;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
 public class Pedido {
 
-	private String nome;
-	private double valorPedido;
 	private double valorFrete;
 	private Cliente cliente;
 	private boolean chegou;
 	private boolean pagou;
-	
-	public Pedido (Cliente cliente, String nomeDoPedido) {
-		this.nome = nomeDoPedido;
+	private Date data;
+	private List<String> nomes;
+	private List<Double> valorPedidos;
+
+
+	public Pedido (Cliente cliente, List<String> nomes) {
 		this.cliente = cliente;
 		this.chegou = false;
 		this.pagou = false;
-	}
-	
-	public Pedido (Cliente cliente, String nomeDoPedido, double valorPedido) {
-		this(cliente, nomeDoPedido);
-		this.valorPedido = valorPedido;
+		this.data = Calendar.getInstance().getTime();
+		this.nomes = nomes;
 	}
 
-	public String getNome() {
-		return nome;
+	public Pedido (Cliente cliente, List<String> nomes, List<Double> valorPedidos) {
+		this(cliente, nomes);
+		this.valorPedidos = valorPedidos;
 	}
 
 	public double getValorTotal() {
 		return valorPedido + valorFrete;
-	}
-	
-	public double getValorPedido() {
-		return valorPedido;
 	}
 
 	public double getValorFrete() {
@@ -41,8 +40,8 @@ public class Pedido {
 		return cliente;
 	}
 	
-	public void definirValorPedido(double valorPedido, double valorFrete) {
-		this.valorPedido = valorPedido;
+	public void definirValorPedido(List<Double> valorPedidos, double valorFrete) {
+		this.valorPedidos = valorPedidos;
 		this.valorFrete = valorFrete;
 	}
 
@@ -60,5 +59,17 @@ public class Pedido {
 	
 	public void pedidoEntregue() {
 		this.chegou = true;
+	}
+
+	public Date getData() {
+		return data;
+	}
+
+	public List<String> getNomes() {
+		return nomes;
+	}
+
+	public List<Double> getValorPedidos() {
+		return valorPedidos;
 	}
 }

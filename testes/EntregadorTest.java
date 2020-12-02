@@ -1,8 +1,9 @@
-package br.ufpa.poo;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import br.ufpa.poo.Cliente;
+import br.ufpa.poo.Entregador;
+import br.ufpa.poo.Pedido;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

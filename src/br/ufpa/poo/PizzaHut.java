@@ -1,18 +1,27 @@
 package br.ufpa.poo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PizzaHut implements Restaurante {
 	
 	private Pedido novoPedido;
 
 	@Override
-	public void realizarPedido(Pedido pedido) {		
-		
+	public void realizarPedido(Pedido pedido) {
+		List<String> pedidos = pedido.getNomes();
+		List<Double> valorPedidos = new ArrayList<>();
+
+		for (String item: pedidos){
+			double valorPrato = Math.random() * 20;
+			valorPedidos.add(valorPrato);
+		}
+
 		double valorFrete = Math.random() * 10;
-		double valorPrato = Math.random() * 20; 
-		
+
 		this.novoPedido = pedido;
 		
-		this.novoPedido.definirValorPedido(valorPrato, valorFrete);
+		this.novoPedido.definirValorPedido(valorPedidos, valorFrete);
 	}
 
 	@Override
