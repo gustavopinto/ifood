@@ -7,44 +7,37 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class EntregadorTest {
-
+	Restaurante pizzaHut = new PizzaHut();
+	
+	Entregador entregador = new Entregador("Henrique");
+	
+	Cliente leonardo = new Cliente("Leonardo", "00000000000");
+	
+	Pedido yakisoba = new Pedido(leonardo, "Yakisoba");
+	
 	@Test
 	void testNovoEntregador() {
-		Entregador entregador = new Entregador("Henrique");
-		
-		Assertions.assertEquals(entregador.getNome(), "Henrique");
+		Assertions.assertEquals(entregador, entregador);
 	}
 
 	@Test
 	void testReceberPedido() {
-		Entregador entregador = new Entregador("Henrique");
-		Pedido novoPedido = new Pedido(new Cliente("Gustavo", "00000"), "Pizza de Queijo");
+		entregador.receberPedido(yakisoba);
 		
-		entregador.receberPedido(novoPedido);
-		
-		Assertions.assertEquals(entregador.getPedido().getNome(), "Pizza de Queijo");
+		Assertions.assertEquals(entregador.getPedido().getNome(), "Yakisoba");
 	}
 
 	@Test
 	void testReceberPagamento() {
-		Entregador entregador = new Entregador("Henrique");
-		Pedido novoPedido = new Pedido(new Cliente("Gustavo", "00000"), "Pizza de Queijo");
+		List<Pedido> pedidos = new ArrayList<Pedido>();
+		pedidos.add(yakisoba);
 		
-		entregador.receberPedido(novoPedido);
-		
-		
-		// QUAL O VALOR DO PEDIDO????
+		leonardo.realizarPedido(pizzaHut, pedidos);
+		pizzaHut.enviarPedido(entregador);
+
 		boolean valorDoPedido = true;
 		
 		Assertions.assertEquals(entregador.getPedido().statusPagamento(), valorDoPedido);
-		
-		List<String> items = new ArrayList<>();
-		
-		for (int i = 0; i < items.size(); i++) {
-			String item = items.get(0);
-			
-		}
-			
 	}
 
 }

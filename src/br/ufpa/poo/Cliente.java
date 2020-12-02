@@ -28,6 +28,11 @@ public class Cliente {
 	
 	public void realizarPedido(Restaurante restaurante, List<Pedido> pedidos) {
 		this.meusPedidos = pedidos;
+		
+		pedidos.forEach(pedido -> {
+			pedido.realizarPagamento();
+		});
+		
 		restaurante.receberPedido(meusPedidos);
 	}
 	
@@ -42,6 +47,13 @@ public class Cliente {
 		});
 		status += "Valor do Total: R$ " + String.format("%.2f", this.meusPedidos.get(0).getValorTotal()) + "\n"; 
 		
+		return status;
+	}
+
+	public String getMeusPedidos() {
+		this.meusPedidos.forEach(pedido -> {
+			status += pedido.getNome() + " ";
+		});
 		return status;
 	}
 

@@ -12,6 +12,6 @@ public interface Restaurante {
 	
 	public void finalizarPedido();
 	
-	public List<Pedido> statusPedido();
+	public String listarPedidos();
 	
 }

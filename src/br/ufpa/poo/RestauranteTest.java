@@ -1,29 +1,40 @@
 package br.ufpa.poo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class RestauranteTest {
 
+	Restaurante pizzaHut = new PizzaHut();
+	
+	Entregador entregador = new Entregador("Henrique");
+	
+	Cliente leonardo = new Cliente("Leonardo", "00000000000");
+	
+	Pedido yakisoba = new Pedido(leonardo, "Yakisoba");
+	
 	@Test
 	void testNovoPedido() {
-		Restaurante restaurante = new PizzaHut();
-		Pedido novoPedido = new Pedido(new Cliente("Gustavo", "00000"), "Pizza de Queijo");
+		List<Pedido> pedidos = new ArrayList<Pedido>();
+		pedidos.add(yakisoba);
 		
-		// restaurante.realizarPedido(novoPedido);
+		pizzaHut.receberPedido(pedidos);
 		
-		// Assertions.assertEquals(restaurante.statusPedido().getNome(), "Pizza de Queijo");
+		Assertions.assertEquals(pizzaHut.listarPedidos(), "Yakisoba ");
 	}
 
 	
 	@Test
 	void testNovoPedidoCliente() {
-		Restaurante restaurante = new PizzaHut();
-		Pedido novoPedido = new Pedido(new Cliente("Gustavo", "00000"), "Pizza de Queijo");
+		List<Pedido> pedidos = new ArrayList<Pedido>();
+		pedidos.add(yakisoba);
 		
-		// restaurante.realizarPedido(novoPedido);
+		leonardo.realizarPedido(pizzaHut, pedidos);
 		
-		// Assertions.assertEquals(restaurante.statusPedido().getCliente().getNome(), "Gustavo");
+		Assertions.assertEquals(pizzaHut.listarPedidos(), "Yakisoba ");
 	}
 	
 	

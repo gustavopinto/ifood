@@ -36,14 +36,17 @@ public class PizzaHut implements Restaurante {
 		novosPedidos.forEach(pedido -> {
 			entregador.receberPedido(pedido);
 		});
-		
 	}
 	
 	public void finalizarPedido() {
 		this.novosPedidos = null;
 	}
 	
-	public List<Pedido> statusPedido() {
-		return novosPedidos;
+	public String listarPedidos() {
+		this.novosPedidos.forEach(pedido -> {
+			this.statusPedidos += pedido.getNome() + " "; 
+		});
+		
+		return this.statusPedidos;
 	}
 }
