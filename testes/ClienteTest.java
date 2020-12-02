@@ -3,7 +3,9 @@ import br.ufpa.poo.PizzaHut;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 class ClienteTest {
 
@@ -16,10 +18,16 @@ class ClienteTest {
 	@Test
 	void testRealizarPedido() {
 		Cliente c1 = new Cliente("Gustavo", "00000000000");
+		List<String> pedidos = new ArrayList<>();
 
-		c1.realizarPedido("Pizza de Queijo", new PizzaHut());
+		pedidos.add("Mussarela");
+		pedidos.add("Peperoni");
+		pedidos.add("Marguerita");
+		pedidos.add("Calabresa");
 
-		Assertions.assertEquals("Pizza de Queijo", c1.getPedido().getNome());
+		c1.realizarPedido(pedidos, new PizzaHut());
+
+		Assertions.assertEquals("Peperoni", c1.getPedido().getNomes().get(1));
 	}
 
 	@Test
@@ -35,8 +43,6 @@ class ClienteTest {
 	@Test
 	void testValorPedido() {
 		Cliente c1 = new Cliente("Gustavo", "00000000000");
-
-		c1.realizarPedido("Pizza de Queijo", new PizzaHut());
 		// COMO FAZ O TESTE DO VALOR DO PEDIDO???
 	}
 
