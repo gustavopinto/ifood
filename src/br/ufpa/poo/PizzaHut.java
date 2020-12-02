@@ -1,36 +1,52 @@
 package br.ufpa.poo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PizzaHut implements Restaurante {
+	private String statusPedidos;
+	private List<Pedido> novosPedidos;
 	
-	private Pedido novoPedido;
+	public PizzaHut() {
+		this.statusPedidos = "";
+		this.novosPedidos = new ArrayList<Pedido>();
+	}
 
 	@Override
-	public void realizarPedido(Pedido pedido) {		
-		
+	public void receberPedido(List<Pedido> pedidos) {		
 		double valorFrete = Math.random() * 10;
-		double valorPrato = Math.random() * 20; 
 		
-		this.novoPedido = pedido;
-		
-		this.novoPedido.definirValorPedido(valorPrato, valorFrete);
+		pedidos.forEach(pedido -> {
+			double valorPrato = Math.random() * 20; 
+			
+			pedido.definirValorPedido(valorPrato);
+			pedido.setValorFrete(valorFrete);
+			
+			this.novosPedidos.add(pedido);
+		});
 	}
 
 	@Override
 	public void cancelarPedido(String nomePedido) {
-		this.novoPedido = null;
+		this.novosPedidos = null;
 	}
 
 	@Override
-	public void enviarPedidoPedido(Entregador entregador) {
-		entregador.receberPedido(novoPedido);
+	public void enviarPedido(Entregador entregador) {
+		novosPedidos.forEach(pedido -> {
+			entregador.receberPedido(pedido);
+		});
 	}
 	
 	public void finalizarPedido() {
-		this.novoPedido = null;
+		this.novosPedidos = null;
 	}
 	
-	public Pedido statusPedido() {
-		return novoPedido;
+	public String listarPedidos() {
+		this.novosPedidos.forEach(pedido -> {
+			this.statusPedidos += pedido.getNome() + " "; 
+		});
+		
+		return this.statusPedidos;
 	}
-
 }

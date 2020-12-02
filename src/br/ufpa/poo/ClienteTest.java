@@ -1,31 +1,32 @@
 package br.ufpa.poo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class ClienteTest {
-
+	Cliente leonardo = new Cliente("Leonardo", "00000000000");
+	
+	Restaurante pizzaHut = new PizzaHut();
+	
+	List<Pedido> pedidos = new ArrayList<Pedido>();
+	
 	@Test
 	void testNovoCliente() {
-		Cliente c1 = new Cliente("Gustavo", "00000000000");
-		Assertions.assertEquals(c1.getNome(), "Gustavo");
+		Assertions.assertEquals(leonardo.getNome(), "Leonardo");
 	}
 
 	@Test
 	void testRealizarPedido() {
-		Cliente c1 = new Cliente("Gustavo", "00000000000");
+		Pedido yakisoba = new Pedido(leonardo, "Yakisoba");
+		pedidos.add(yakisoba);
+		Pedido arrozCarreteiro = new Pedido(leonardo, "Arroz Carreteiro");
+		pedidos.add(arrozCarreteiro);
+		
+		leonardo.realizarPedido(pizzaHut, pedidos);
 
-		c1.realizarPedido("Pizza de Queijo", new PizzaHut());
-
-		Assertions.assertEquals(c1.getPedido().getNome(), "Pizza de Queijo");
+		Assertions.assertEquals(leonardo.getMeusPedidos(), "Yakisoba Arroz Carreteiro ");
 	}
-
-	@Test
-	void testValorPedido() {
-		Cliente c1 = new Cliente("Gustavo", "00000000000");
-
-		c1.realizarPedido("Pizza de Queijo", new PizzaHut());
-		// COMO FAZ O TESTE DO VALOR DO PEDIDO???
-	}
-
 }
