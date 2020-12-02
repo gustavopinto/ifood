@@ -16,7 +16,7 @@ public class Entregador {
 	}
 
 	public void receberPagamento(double valor) {
-		if (valor == pedido.getValorTotal()) {
+		if (valor >= pedido.getValorTotal()) {
 			pedido.realizarPagamento();
 			this.saldo += pedido.getValorFrete();
 		}

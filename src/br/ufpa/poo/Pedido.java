@@ -1,48 +1,66 @@
 package br.ufpa.poo;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
 public class Pedido {
 
-	private String nome;
-	private double valorPedido;
+	private List<String> nomes;
+	private List<Double> valorPedidos;
+	private double somaPedidos;
 	private double valorFrete;
 	private Cliente cliente;
 	private boolean chegou;
 	private boolean pagou;
+	private Date dataPedido;
 	
-	public Pedido (Cliente cliente, String nomeDoPedido) {
-		this.nome = nomeDoPedido;
+	public Pedido (Cliente cliente, List<String> nomes) {
+		this.nomes = nomes;
+		this.somaPedidos = 0;
 		this.cliente = cliente;
 		this.chegou = false;
 		this.pagou = false;
+		this.dataPedido = new Date(System.currentTimeMillis());
 	}
 	
-	public Pedido (Cliente cliente, String nomeDoPedido, double valorPedido) {
-		this(cliente, nomeDoPedido);
-		this.valorPedido = valorPedido;
+	public Pedido (Cliente cliente, List<String> nomes, List<Double> valorPedidos) {
+		this(cliente, nomes);
+		this.valorPedidos = valorPedidos;
 	}
 
-	public String getNome() {
-		return nome;
+	public List<String> getNomes() {
+		return nomes;
+	}
+	
+	private double somarValorPedidos() {
+		double soma = 0;
+		
+		for (Double d: this.valorPedidos) {
+			soma += d;
+		}
+		
+		return soma;
 	}
 
 	public double getValorTotal() {
-		return valorPedido + valorFrete;
+		return somarValorPedidos() + valorFrete;
 	}
 	
-	public double getValorPedido() {
-		return valorPedido;
+	public List<Double> getValorPedido() {
+		return valorPedidos;
 	}
 
 	public double getValorFrete() {
-		return valorPedido;
+		return valorFrete;
 	}
 
 	public Cliente getCliente() {
 		return cliente;
 	}
 	
-	public void definirValorPedido(double valorPedido, double valorFrete) {
-		this.valorPedido = valorPedido;
+	public void definirValorPedido(List<Double> valorPedidos, double valorFrete) {
+		this.valorPedidos = valorPedidos;
 		this.valorFrete = valorFrete;
 	}
 
@@ -60,5 +78,9 @@ public class Pedido {
 	
 	public void pedidoEntregue() {
 		this.chegou = true;
+	}
+	
+	public Date infoDataPedido() {
+		return this.dataPedido;
 	}
 }

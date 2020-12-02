@@ -18,20 +18,32 @@ class EntregadorTest {
 	@Test
 	void testReceberPedido() {
 		Entregador entregador = new Entregador("Henrique");
-		Pedido novoPedido = new Pedido(new Cliente("Gustavo", "00000"), "Pizza de Queijo");
+		List<String> pedidos = new ArrayList<>();
+		pedidos.add("Pizza de Queijo");
+		pedidos.add("Pizza de Abacaxi");
+		pedidos.add("Refrigerante de Cola");
+		Pedido novoPedido = new Pedido(new Cliente("Gustavo", "00000"), pedidos);
 		
 		entregador.receberPedido(novoPedido);
 		
-		Assertions.assertEquals(entregador.getPedido().getNome(), "Pizza de Queijo");
+		Assertions.assertEquals(entregador.getPedido().getNomes().get(0), "Pizza de Queijo");
 	}
 
 	@Test
 	void testReceberPagamento() {
 		Entregador entregador = new Entregador("Henrique");
-		Pedido novoPedido = new Pedido(new Cliente("Gustavo", "00000"), "Pizza de Queijo");
+		
+		List<String> pedidos = new ArrayList<>();
+		pedidos.add("Pizza de Queijo");
+		pedidos.add("Pizza de Abacaxi");
+		pedidos.add("Refrigerante de Cola");
+		Pedido novoPedido = new Pedido(new Cliente("Gustavo", "00000"), pedidos);
+		
+		Restaurante restaurante = new PizzaHut();
+		restaurante.realizarPedido(novoPedido);
 		
 		entregador.receberPedido(novoPedido);
-		
+		entregador.receberPagamento(100);
 		
 		// QUAL O VALOR DO PEDIDO????
 		boolean valorDoPedido = true;
