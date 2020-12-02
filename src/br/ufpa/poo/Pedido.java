@@ -1,5 +1,9 @@
 package br.ufpa.poo;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Pedido {
 
 	private String nome;
@@ -8,6 +12,7 @@ public class Pedido {
 	private Cliente cliente;
 	private boolean chegou;
 	private boolean pagou;
+	private String dataPedido;
 	
 	public Pedido (Cliente cliente, String nomeDoPedido) {
 		this.nome = nomeDoPedido;
@@ -23,6 +28,13 @@ public class Pedido {
 
 	public String getNome() {
 		return nome;
+	}
+	
+	public String getHora() {
+		Date date = new Date();
+        String dataAtual = DateFormat.getDateInstance(DateFormat.MEDIUM).format(date);
+		this.dataPedido = dataAtual;
+		return dataPedido;
 	}
 
 	public double getValorTotal() {

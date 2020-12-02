@@ -2,35 +2,56 @@ package br.ufpa.poo;
 
 public class PizzaHut implements Restaurante {
 	
-	private Pedido novoPedido;
+	private Pedido[] pedidos;
+	private Pedido pedido;
 
 	@Override
-	public void realizarPedido(Pedido pedido) {		
+	public void realizarPedido(Pedido[] pedido) {		
 		
-		double valorFrete = Math.random() * 10;
-		double valorPrato = Math.random() * 20; 
+		double valorFrete;
+		double valorPrato; 
 		
-		this.novoPedido = pedido;
+		this.pedidos = pedido;
+		for(int i = 0; i < this.pedidos.length; i++) {
+			valorFrete = Math.random() * 10;
+			valorPrato = Math.random() * 20;
+			this.pedidos[i].definirValorPedido(valorPrato, valorFrete);
+		}
 		
-		this.novoPedido.definirValorPedido(valorPrato, valorFrete);
+	}
+	@Override
+	public void realizarPedido(Pedido pedido) {
+		double valorFrete;
+		double valorPrato; 
+		
+		this.pedido = pedido;
+		
+			valorFrete = Math.random() * 10;
+			valorPrato = Math.random() * 20;
+			this.pedido.definirValorPedido(valorPrato, valorFrete);
+		
+		
 	}
 
 	@Override
 	public void cancelarPedido(String nomePedido) {
-		this.novoPedido = null;
+		this.pedidos = null;
 	}
 
 	@Override
 	public void enviarPedidoPedido(Entregador entregador) {
-		entregador.receberPedido(novoPedido);
+		entregador.receberPedido(pedidos);
 	}
 	
 	public void finalizarPedido() {
-		this.novoPedido = null;
+		this.pedidos = null;
 	}
 	
-	public Pedido statusPedido() {
-		return novoPedido;
+	public Pedido[] statusPedido() {
+		return pedidos;
 	}
+
+	
+
 
 }

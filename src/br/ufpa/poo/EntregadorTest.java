@@ -31,7 +31,8 @@ class EntregadorTest {
 		Pedido novoPedido = new Pedido(new Cliente("Gustavo", "00000"), "Pizza de Queijo");
 		
 		entregador.receberPedido(novoPedido);
-		
+
+		novoPedido.realizarPagamento();
 		
 		// QUAL O VALOR DO PEDIDO????
 		boolean valorDoPedido = true;
