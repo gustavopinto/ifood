@@ -37,14 +37,6 @@ class EntregadorTest {
 		boolean valorDoPedido = true;
 		
 		Assertions.assertEquals(entregador.getPedido().statusPagamento(), valorDoPedido);
-		
-		List<String> items = new ArrayList<>();
-		
-		for (int i = 0; i < items.size(); i++) {
-			String item = items.get(0);
-			
-		}
-			
 	}
 
 }
